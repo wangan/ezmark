@@ -1,0 +1,36 @@
+{
+  "name": "ezmark",
+  "version": "1.0.0",
+  "description": "Organize your bookmark",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bookmark\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Deasy",
+    "mark",
+    "bookmark",
+    "origaniziton"
+  ],
+  "author": "anntony.wang@live.com",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.6.5"
+  },
+  "devDependencies": {
+    "gulp": "3.9.0",
+    "gulp-concat": "2.5.2",
+    "gulp-cssmin": "0.1.7",
+    "gulp-flatten": "^0.2.0",
+    "gulp-uglify": "1.2.0",
+    "rimraf": "2.2.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangan/ezmark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangan/ezmark/issues"
+  },
+  "homepage": "https://github.com/wangan/ezmark#readme"
+}

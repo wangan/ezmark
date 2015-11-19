@@ -1,0 +1,32 @@
+{
+  "name": "ezmark",
+  "description": "Organize your bookmark",
+  "main": "js/main.js",
+  "authors": [
+    "anntony.wang@live.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "bookmark\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Deasy",
+    "mark",
+    "bookmark",
+    "origaniziton"
+  ],
+  "homepage": "https://github.com/wangan/ezmark",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.4.7",
+    "artTemplate": "aui/artTemplate#~3.0.1",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
+  }
+}
