@@ -1,6 +1,6 @@
 var chrome = chrome;
-var index = 0;
 var sequenceId = 0;
+var logHTML = "";
 
 function newItem(data) {
     var json = {
@@ -17,24 +17,27 @@ function newItem(data) {
 }
 
 function retrieve(items, children, parentId) {
-    if (typeof (items) !== "undefined") {
-        for (var i = 0; i < items.length; i++) {
-            sequenceId++;
-            var curItem = items[i];
-            $(".root").append("<li>" + curItem.title + "</li>");
+    if (typeof (items) == "undefined")
+        return;
+    for (var i = 0; i < items.length; i++) {
+        sequenceId++;
+        var curItem = items[i];
 
-            var item = newItem(curItem);
-            item.id = sequenceId;
-            item.parentId = parentId;
-            item.index = i;
-            children.push(item);
+        if (i == 0)
+            logHTML += "<ul>";
 
-            var subItems = curItem.children;
-            retrieve(subItems, item.children, item.id);
-        }
-    } else {
-        index++;
+        var item = newItem(curItem);
+        item.id = sequenceId;
+        item.parentId = parentId;
+        item.index = i;
+        children.push(item);
+
+        var subItems = curItem.children;
+        logHTML += "<li>" + curItem.title + "</li>";
+        retrieve(subItems, item.children, item.id);
     }
+
+    logHTML += "</ul>";
 }
 
 chrome.bookmarks.getTree(function (root) {
@@ -49,8 +52,16 @@ chrome.bookmarks.getTree(function (root) {
         bookmarks.title = "所有书签";
 
         retrieve(items, bookmarks.children, bookmarks.id);
+        $(".root").append(logHTML);
         console.log(bookmarks);
     }
+});
+
+
+
+chrome.bookmarks.onCreated.addListener(function () {
+
+    console.log("Create 1");
 });
 
 $(function () {

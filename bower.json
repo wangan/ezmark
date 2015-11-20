@@ -27,6 +27,7 @@
     "angular": "angularjs#~1.4.7",
     "artTemplate": "aui/artTemplate#~3.0.1",
     "bootstrap": "~3.3.5",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "angular-dragula": "~1.1.6"
   }
 }

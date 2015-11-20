@@ -26,21 +26,21 @@ paths.commonLib_CSS = paths.webroot + "bower_components/*/dist/**/*.min.css";
 paths.commonLib_Font = paths.webroot + "bower_components/*/dist/fonts/*.*";
 
 gulp.task("min:css", function () {
-    gulp.src([paths.css, "!" + paths.minCss]) 
-        .pipe(cssmin())	
-        .pipe(rename({suffix: '.min'}))
+    gulp.src([paths.css, "!" + paths.minCss])
+        .pipe(cssmin())
+        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./css/'));
 });
 
 gulp.task("min:js", function () {
-    gulp.src([paths.js, "!" + paths.minJs], { base: "." }) 
+    gulp.src([paths.js, "!" + paths.minJs], { base: "." })
         .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest("."));
 });
 
 gulp.task("copy:js", function () {
-    gulp.src(paths.commonLib_JS)
+    gulp.src([paths.commonLib_JS, paths.webroot + "bower_components/artTemplate/dist/template.js"])
         .pipe(flatten({ includeParents: [1, 0] }))
         .pipe(gulp.dest(paths.webroot + "js/"))
 })
