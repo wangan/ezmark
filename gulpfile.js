@@ -4,6 +4,7 @@ var gulp = require("gulp"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
+    rename = require('gulp-rename'),
     flatten = require("gulp-flatten"),
     uglify = require("gulp-uglify")
 
@@ -13,25 +14,28 @@ var paths = {
 
 paths.js = paths.webroot + "js/**/*.js";
 paths.minJs = paths.webroot + "js/**/*.min.js";
+
 paths.css = paths.webroot + "css/**/*.css";
 paths.minCss = paths.webroot + "css/**/*.min.css";
+
 paths.concatJsDest = paths.webroot + "js/site.min.js";
 paths.concatCssDest = paths.webroot + "css/site.min.css";
+
 paths.commonLib_JS = paths.webroot + "bower_components/*/dist/**/*.min.js";
 paths.commonLib_CSS = paths.webroot + "bower_components/*/dist/**/*.min.css";
 paths.commonLib_Font = paths.webroot + "bower_components/*/dist/fonts/*.*";
 
 gulp.task("min:css", function () {
-    gulp.src([paths.css, "!" + paths.minCss])
-        .pipe(concat(paths.concatCssDest))
-        .pipe(cssmin())
-        .pipe(gulp.dest("."));
+    gulp.src([paths.css, "!" + paths.minCss]) 
+        .pipe(cssmin())	
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('./css/'));
 });
 
 gulp.task("min:js", function () {
-    gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-        .pipe(concat(paths.concatJsDest))
+    gulp.src([paths.js, "!" + paths.minJs], { base: "." }) 
         .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest("."));
 });
 
