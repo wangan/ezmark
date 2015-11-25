@@ -83,6 +83,6 @@ $(function () {
         //        window.open("options.html");
         chrome.tabs.create({ url: "options.html" }, function () {
 
-        });·
+        });
     });
 });
