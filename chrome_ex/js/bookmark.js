@@ -44,31 +44,45 @@ chrome.bookmarks.getTree(function (root) {
     if (typeof (root) !== "undefined") {
         console.log(root);
         var items = root[0].children;
+        // console.log(JSON.stringify(root[0]))
 
-        var bookmarks = newItem(items);
-        bookmarks.id = sequenceId;
-        bookmarks.parentId = sequenceId;
-        bookmarks.index = 0;
-        bookmarks.title = "所有书签";
+        var testData = { "A": 1 };
 
-        retrieve(items, bookmarks.children, bookmarks.id);
-        $(".root").append(logHTML);
-        console.log(bookmarks);
+        $.ajax({
+            url: "http://localhost:3000/api",
+            type: "POST",
+            contentType: "application/json",
+            // data: JSON.stringify(root[0]),
+            data: JSON.stringify(root[0]),
+            success: function (data) {
+                console.log(data)
+            }
+        });
+
+        //         var bookmarks = newItem(items);
+        //         bookmarks.id = sequenceId;
+        //         bookmarks.parentId = sequenceId;
+        //         bookmarks.index = 0;
+        //         bookmarks.title = "所有书签";
+        // 
+        //         retrieve(items, bookmarks.children, bookmarks.id);
+        //         $(".root").append(logHTML);
+        //         console.log(bookmarks);
     }
 });
-
-
 
 chrome.bookmarks.onCreated.addListener(function () {
 
     console.log("Create 1");
 });
 
+
+
 $(function () {
     $("#open-options").click(function () {
         //        window.open("options.html");
         chrome.tabs.create({ url: "options.html" }, function () {
 
-        });
+        });·
     });
 });
